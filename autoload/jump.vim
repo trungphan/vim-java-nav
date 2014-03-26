@@ -11,7 +11,7 @@ function! jump#JumpToJavaTest()
 
     if (expand("%:e") == "java")
         let currpath=expand("%:p:h")
-        if (currpath =~ ".*" . g:jump_src_java_main . ".*")
+        if (currpath =~ ".*" . g:jump_src_java_main . ".*" && expand("%:p:r") !~ ".*Test$" )
             let testpath=substitute(currpath, g:jump_src_java_main, g:jump_src_java_test, "")
             let testfilename=expand("%:t:r") . "Test.java"
             let testfile=testpath . "/" . testfilename
